@@ -3,10 +3,7 @@ import org.example._
 
 object App {
   def main(args: Array[String]): Unit = {
-    val spark: SparkSession = SparkSession.builder()
-      .appName("PostgreSQL with Spark Example")
-      .master("local[*]")
-      .getOrCreate()
+    val spark: SparkSession = SparkSessionBuilder.initializeSparkSession("PostgreSQL with Spark")
 
     val jdbcUrl = "jdbc:postgresql://localhost:5432/"
     val user = "postgres"
@@ -25,7 +22,6 @@ object App {
     df.show()
 
     CSVWriter.writeDataFrameToCSV(df,path)
-
-
+    spark.stop()
   }
 }
