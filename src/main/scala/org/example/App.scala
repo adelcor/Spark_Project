@@ -6,13 +6,11 @@ object App {
     val spark: SparkSession = SparkSessionBuilder.initializeSparkSession("PostgreSQL with Spark")
 
     val jdbcUrl = "jdbc:postgresql://localhost:5432/"
-    val user = "postgres"
-    val password = "admin"  // Reemplazar con la contraseña real
     val path = "C:/Metro/test.csv"
 
 
     // Establecer las propiedades de conexión usando la función importada
-    val connectionProperties = ConnectionPropertiesSetter.setConnectionProperties(user, password)
+    val connectionProperties = ConnectionPropertiesSetter.getConnectionProperties
 
     val tableName = "shop_pedido"
 
