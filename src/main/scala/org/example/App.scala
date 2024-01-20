@@ -1,25 +1,30 @@
+package org.example
+
 import org.apache.spark.sql.SparkSession
-import org.example._
+object App extends Logging {
 
-object App {
+
   def main(args: Array[String]): Unit = {
-    val spark: SparkSession = SparkSessionBuilder.initializeSparkSession(Exampleconst.name)
 
-    val jdbcUrl = Exampleconst.url
-    val path = Exampleconst.path
+    logger.info("Inicializando la sesion de Spark")
 
+    implicit val spark: SparkSession = SparkSessionBuilder.initializeSparkSession(Exampleconst.name)
 
-    // Establecer las propiedades de conexión usando la función importada
-    val connectionProperties = ConnectionPropertiesSetter.getConnectionProperties
+    logger.info("Leyendo la tabla de la base de datos")
 
-    val tableName = Exampleconst.tableName
+    val df = DatabaseReader.readDatabaseTable
 
-    // Llamar a la función para conectarse a la base de datos y leer la tabla usando la función importada
-    val df = DatabaseReader.readDatabaseTable(spark, jdbcUrl, tableName, connectionProperties)
+    logger.info("Mostrando los primeros registros del DataFrame")
 
     df.show()
 
-    CSVWriter.writeDataFrameToCSV(df,path)
+    logger.info("Escribiendo el DataFrame a CSV en la ruta $path")
+
+    CSVWriter.writeDataFrameToCSV(df)
+
+    logger.info("Deteniendo la sesion de Spark")
+
     spark.stop()
+
   }
 }

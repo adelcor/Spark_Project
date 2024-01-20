@@ -4,7 +4,9 @@ import org.apache.spark.sql.{DataFrame, SparkSession}
 import java.util.Properties
 
 object DatabaseReader {
-  def readDatabaseTable(spark: SparkSession, url: String, table: String, properties: Properties): DataFrame = {
-    spark.read.jdbc(url, table, properties)
+  def readDatabaseTable(implicit spark: SparkSession): DataFrame = {
+    val properties = ConnectionPropertiesSetter.getConnectionProperties
+
+    spark.read.jdbc(Exampleconst.url, Exampleconst.tableName, properties)
   }
 }
