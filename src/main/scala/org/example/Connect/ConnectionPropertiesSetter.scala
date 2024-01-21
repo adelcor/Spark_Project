@@ -1,5 +1,6 @@
-package org.example
+package org.example.Connect
 
+import org.example.constants.Exampleconst
 import java.util.Properties
 import scala.io.Source
 

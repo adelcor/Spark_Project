@@ -1,4 +1,5 @@
-package org.example
+package org.example.SessionBuilder
+
 import org.apache.spark.sql.SparkSession
 object SparkSessionBuilder {
   def initializeSparkSession(appName: String): SparkSession = {

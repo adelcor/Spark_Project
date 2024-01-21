@@ -1,6 +1,10 @@
 package org.example
 
 import org.apache.spark.sql.SparkSession
+import org.example.Logger.Logging
+import org.example.SessionBuilder.SparkSessionBuilder
+import org.example.constants.Exampleconst
+import org.example.Layers.BronzeLayer
 object App extends Logging {
 
 
@@ -10,17 +14,7 @@ object App extends Logging {
 
     implicit val spark: SparkSession = SparkSessionBuilder.initializeSparkSession(Exampleconst.name)
 
-    logger.info("Leyendo la tabla de la base de datos")
-
-    val df = DatabaseReader.readDatabaseTable
-
-    logger.info("Mostrando los primeros registros del DataFrame")
-
-    df.show()
-
-    logger.info("Escribiendo el DataFrame a CSV en la ruta $path")
-
-    CSVWriter.writeDataFrameToCSV(df)
+    BronzeLayer.processBronzeLayer
 
     logger.info("Deteniendo la sesion de Spark")
 
