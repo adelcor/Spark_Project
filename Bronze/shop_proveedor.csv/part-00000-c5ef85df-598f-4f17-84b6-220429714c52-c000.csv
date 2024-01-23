@@ -1,0 +1,3 @@
+id_proveedor,compania,contacto,direccion,region,ciudad,codigo_postal,pais,telefono,fax,pagina_principal
+1,Proveedor A,Contacto A,Direccion A,Region A,Ciudad A,CPA,Pais A,123456789,987654321,http://pa.com
+2,Proveedor B,Contacto B,Direccion B,Region B,Ciudad B,CPB,Pais B,123456789,987654321,http://pb.com

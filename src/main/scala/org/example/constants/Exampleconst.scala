@@ -29,4 +29,6 @@ object Exampleconst {
 
     // Path to the application properties file.
     val Propertiespath = "/application.properties"
+
+    val pathSilver: String = "C:/project_spark/Spark_Project/Silver/Silver.parquet"
 }

@@ -5,6 +5,7 @@ import org.example.Logger.Logging
 import org.example.SessionBuilder.SparkSessionBuilder
 import org.example.constants.Exampleconst
 import org.example.Layers.BronzeLayer
+import org.example.Layers.SilverLayer
 
 /**
  * The main application object.
@@ -29,6 +30,7 @@ object App extends Logging {
 
     // Process data through the Bronze layer
     BronzeLayer.processBronzeLayer
+    SilverLayer.processSilverLayer
 
     // Log the stopping of the Spark session
     logger.info("Deteniendo la sesion de Spark")
