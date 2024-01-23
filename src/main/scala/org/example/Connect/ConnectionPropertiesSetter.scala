@@ -4,22 +4,51 @@ import org.example.constants.Exampleconst
 import java.util.Properties
 import scala.io.Source
 
+/**
+ * Singleton object responsible for setting up connection properties.
+ *
+ * This object provides utilities for loading connection properties from a file
+ * and preparing them for use in establishing database connections.
+ */
 object ConnectionPropertiesSetter {
+  // Load properties from the file specified in Exampleconst.Propertiespath.
   private val properties: Properties = loadPropertiesFromFile(Exampleconst.Propertiespath)
 
+  /**
+   * Loads properties from a file located at the given filePath.
+   *
+   * @param filePath The path to the properties file.
+   * @return A Properties object containing the loaded properties.
+   */
   private def loadPropertiesFromFile(filePath: String): Properties = {
     val props = new Properties()
+    // Using scala.io.Source to read from the file.
     val source = Source.fromURL(getClass.getResource(filePath))
+    // Loading properties from the file.
     props.load(source.bufferedReader())
     source.close()
     props
   }
 
+  /**
+   * Retrieves the database connection properties.
+   *
+   * Extracts user and password properties and encapsulates them into a new Properties object.
+   * Note: This method assumes that 'db.user' and 'db.password' are present in the properties file.
+   *
+   * @return A Properties object containing user and password for the database connection.
+   */
   def getConnectionProperties: Properties = {
     val connectionProperties = new Properties()
+    // Extracting user and password properties.
     val user = properties.getProperty("db.user")
     val password = properties.getProperty("db.password")
-    // añadir validación o manejo de errores aquí en caso de que las propiedades no existan.
+
+    // It's important to handle the case where properties might not exist.
+    if (user == null || password == null) {
+      throw new IllegalStateException("Database user or password not defined in properties.")
+    }
+
     connectionProperties.setProperty("user", user)
     connectionProperties.setProperty("password", password)
     connectionProperties
