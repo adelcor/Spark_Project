@@ -1,3 +1,0 @@
-id_producto,id_proveedor,nombre,categoria,subcategoria,marca,peso,altura,anchura,profundidad,importe,moneda
-1,1,Producto A,Categoria A,Subcategoria A,Marca A,1.500000000000000000,10.000000000000000000,5.000000000000000000,2.000000000000000000,99.99,EUR
-2,2,Producto B,Categoria B,Subcategoria B,Marca B,2.500000000000000000,15.000000000000000000,10.000000000000000000,5.000000000000000000,199.99,EUR

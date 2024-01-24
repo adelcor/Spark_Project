@@ -38,19 +38,25 @@ object ConnectionPropertiesSetter {
    *
    * @return A Properties object containing user and password for the database connection.
    */
-  implicit  def getConnectionProperties: Properties = {
+  implicit def getConnectionProperties: Properties = {
     val connectionProperties = new Properties()
-    // Extracting user and password properties.
     val user = properties.getProperty("db.user")
     val password = properties.getProperty("db.password")
 
-    // It's important to handle the case where properties might not exist.
-    if (user == null || password == null) {
-      throw new IllegalStateException("Database user or password not defined in properties.")
+    try {
+      if (user != null && password != null) {
+        connectionProperties.setProperty("user", user)
+        connectionProperties.setProperty("password", password)
+      } else {
+        // Throw an exception if user or password is not defined in properties.
+        throw new IllegalStateException("Database user or password not defined in properties.")
+      }
+    } catch {
+      case ex: Exception =>
+        // Handle any exceptions that may occur during property extraction.
+        println(s"Error setting connection properties: ${ex.getMessage}")
     }
 
-    connectionProperties.setProperty("user", user)
-    connectionProperties.setProperty("password", password)
     connectionProperties
   }
 }
