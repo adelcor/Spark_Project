@@ -23,6 +23,7 @@ object Exampleconst {
     val tableCliente = "shop_cliente"
     val tableProducto = "shop_producto"
     val tableProveedor = "shop_proveedor"
+    val tableSilver = "Silver"
 
     // General application name.
     val name = "PostgreSQL with Spark"

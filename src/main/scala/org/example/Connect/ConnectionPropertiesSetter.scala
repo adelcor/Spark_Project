@@ -38,7 +38,7 @@ object ConnectionPropertiesSetter {
    *
    * @return A Properties object containing user and password for the database connection.
    */
-  def getConnectionProperties: Properties = {
+  implicit  def getConnectionProperties: Properties = {
     val connectionProperties = new Properties()
     // Extracting user and password properties.
     val user = properties.getProperty("db.user")

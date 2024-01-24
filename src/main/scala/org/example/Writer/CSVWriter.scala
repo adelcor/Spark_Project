@@ -1,7 +1,6 @@
 package org.example.Writer
 
-import org.apache.spark.sql.DataFrame
-import org.example.constants.Exampleconst
+import org.apache.spark.sql.{DataFrame, SaveMode}
 
 /**
  * Object to handle the writing of data frames to CSV format.
@@ -19,7 +18,7 @@ object CSVWriter {
    */
   def writeToCSV(path: String, dataFrame: DataFrame): Unit = {
     // Ensuring that the header is written along with data
-    dataFrame.write
+    dataFrame.write.mode(SaveMode.Overwrite)
       .option("header", "true") // Including the header for better readability of CSV
       .csv(path) // Writing the DataFrame to the specified path in CSV format
   }
