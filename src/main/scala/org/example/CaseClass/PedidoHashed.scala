@@ -10,10 +10,12 @@ case class PedidoHashed(
                               nombre: String,
                               apellido1: String,
                               apellido2: String,
-                              hashed_email: String,
-                              hashed_telefono: String,
+                              email_hashed: String,
+                              telefono_hashed: String,
                               nombre_producto: String,
                               categoria: String,
                               subcategoria: String,
-                              marca: String
+                              marca: String,
+
+
                             )

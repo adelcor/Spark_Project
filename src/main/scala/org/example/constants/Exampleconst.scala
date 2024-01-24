@@ -18,12 +18,18 @@ object Exampleconst {
     val pathProducto: String = "C:/project_spark/Spark_Project/Bronze/shop_producto.csv"
     val pathProveedor: String = "C:/project_spark/Spark_Project/Bronze/shop_proveedor.csv"
 
+    val pathSilver: String = "C:/project_spark/Spark_Project/Silver/Silver.parquet"
+    val pathGoldHashed: String = "C:/project_spark/Spark_Project/Gold/Gold_Hashed.parquet"
+    val pathGold: String =  "C:/project_spark/Spark_Project/Gold/Gold.parquet"
+
     // Names of the database tables.
     val tablePedido = "shop_pedido"
     val tableCliente = "shop_cliente"
     val tableProducto = "shop_producto"
     val tableProveedor = "shop_proveedor"
     val tableSilver = "Silver"
+    val tableGoldHashed = "GoldHashed"
+    val tableGold = "Gold"
 
     // General application name.
     val name = "PostgreSQL with Spark"
@@ -31,5 +37,4 @@ object Exampleconst {
     // Path to the application properties file.
     val Propertiespath = "/application.properties"
 
-    val pathSilver: String = "C:/project_spark/Spark_Project/Silver/Silver.parquet"
 }
